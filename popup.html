@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/tailwind.min.css">
+</head>
+
+<body class="text-base font-sans text-gray-700">
+  <div class="p-4 w-72">
+    <form id="credentials-form">
+      <h3 class="uppercase text-center text-lg font-bold">Credentials</h3>
+      <div class="mb-2">
+        <label>
+          <div class="font-bold">User</div>
+          <input type="text" placeholder="username@nauta.com.cu" class="w-full border border-gray-300 p-2 rounded font-md" name="username">
+        </label>
+      </div>
+      <div class="mb-2">
+        <label>
+          <div class="font-bold">Password</div>
+          <input type="password" placeholder="tun turun tu" class="w-full border border-gray-300 p-2 rounded font-md" name="password">
+        </label>
+      </div>
+    </form>
+    <div class="mb-2">
+      <div class="font-bold">Last connection</div>
+    <div id="last-connection-at" class="text-nowrap"></div>
+    </div>
+    <div class="mb-2">
+      <div class="font-bold">Time left</div>
+      <div id="time-left" class="text-nowrap"></div>
+    </div>
+    <div class="mb-2">
+      <div class="font-bold">Time connected</div>
+      <div id="time-connected" class="text-nowrap"></div>
+    </div>
+    <div>
+      <button id="connect-button" class="block w-full p-2 bg-green-500 text-white font-bold text-center uppercase rounded text-lg">Connect</button>
+      <button id="disconnect-button" class="block w-full p-2 bg-red-500 text-white font-bold text-center uppercase rounded text-lg">Disconnect</button>
+    </div>
+  </div>
+  <script src="scripts/luxon.min.js"></script>
+  <script src="scripts/popup.js"></script>
+</body>
+
+</html>

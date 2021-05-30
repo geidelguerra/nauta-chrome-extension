@@ -14,7 +14,8 @@
     "tabs",
     "activeTab",
     "scripting",
-    "alarms"
+    "alarms",
+    "nativeMessaging"
   ],
   "host_permissions": [
     "https://secure.etecsa.net:8443/*"

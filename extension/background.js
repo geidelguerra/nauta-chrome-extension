@@ -115,6 +115,18 @@ const updateTimeConnected = () => {
   })
 }
 
+const updateVPNStatus = () => {
+  chrome.runtime.sendNativeMessage('com.geidelguerra.nauta_chrome_extension', { action: 'check-vpn' }, (response) => {
+    if (response.error) {
+      console.error('Native host error:', response.error)
+
+      return
+    }
+
+    chrome.storage.local.set({ vpnStatus: response.status })
+  })
+}
+
 const init = () => {
   chrome.tabs.query({ url: 'https://secure.etecsa.net:8443/web/online.do*' }, (tabs) => {
     if (tabs.length === 0) {
@@ -188,6 +200,7 @@ chrome.storage.local.onChanged.addListener((changes) => {
       })
 
       updateTimeConnected()
+      updateVPNStatus()
       createTimeConnectedRefreshAlarm()
     } else {
       clearTimeConnectedRefreshAlarm()
@@ -222,5 +235,14 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 
   if (alarm.name === 'refresh-time-connected') {
     updateTimeConnected()
+    updateVPNStatus()
+
+    return
   }
 })
+
+// chrome.runtime.sendNativeMessage('com.geidelguerra.nauta_chrome_extension', {
+//   action: 'check-vpn'
+// }, (response) => {
+//   console.log('Native host response:', response)
+// })

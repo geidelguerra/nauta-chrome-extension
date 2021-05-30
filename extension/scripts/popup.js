@@ -58,6 +58,10 @@ const updateTimeConnected = (value) => {
   timeConnected.innerText = value
 }
 
+const updateVPNStatus = (status) => {
+  vpnStatus.innerText = status
+}
+
 const usernameInput = document.querySelector('input[name="username"]')
 usernameInput.addEventListener('change', (event) => saveCredentials({ username: event.target.value }))
 
@@ -67,6 +71,7 @@ passwordInput.addEventListener('change', (event) => saveCredentials({ password: 
 const timeLeft = document.getElementById('time-left')
 const lastConnectionAt = document.getElementById('last-connection-at')
 const timeConnected = document.getElementById('time-connected')
+const vpnStatus = document.getElementById('vpn-status')
 
 const connectButton = document.getElementById('connect-button')
 connectButton.addEventListener('click', connect)
@@ -92,6 +97,10 @@ chrome.storage.local.onChanged.addListener((changes) => {
   if (changes.timeConnected) {
     updateTimeConnected(changes.timeConnected.newValue)
   }
+
+  if (changes.vpnStatus) {
+    updateVPNStatus(changes.vpnStatus.newValue)
+  }
 })
 
 const init = (options) => {
@@ -102,6 +111,7 @@ const init = (options) => {
   updateTimeLeft(options.timeLeft)
   updateLastConnectionAt(options.lastConnectionAt)
   updateTimeConnected(options.timeConnected)
+  updateVPNStatus(options.vpnStatus || '-')
 }
 
 chrome.storage.local.get(null, (options) => init(options))

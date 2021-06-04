@@ -2,7 +2,7 @@
   // ID: jbikoelcekcnkdlnjcembcjjhnhljgop
   "name": "Nauta",
   "description": "",
-  "version": "1.0",
+  "version": "1.0.0",
   "manifest_version": 3,
   "action": {
     "default_popup": "dist/index.html"

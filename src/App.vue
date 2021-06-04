@@ -121,6 +121,14 @@ export default {
         return null
       }
 
+      if (this.timeLeft === '') {
+        return null
+      }
+
+      if (this.timeLeft === '--:--:--') {
+        return null
+      }
+
       const { hours, minutes, seconds } = this.$duration(this.timeLeft).shiftTo('hours', 'minutes', 'seconds')
 
       return `${hours.toFixed(0)}h ${minutes.toFixed(0)}m ${seconds.toFixed(0)}s`

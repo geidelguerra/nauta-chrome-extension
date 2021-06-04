@@ -1,7 +1,7 @@
 {
   // ID: jbikoelcekcnkdlnjcembcjjhnhljgop
   "name": "Nauta",
-  "description": "",
+  "description": "Chrome extension to manage Nauta connection/disconnection (Only works from Cuba)",
   "version": "1.0.0",
   "manifest_version": 3,
   "action": {

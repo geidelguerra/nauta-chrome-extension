@@ -1,0 +1,23 @@
+{
+  "name": "chrome-nauta-helper",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.3",
+    "@vue/compiler-sfc": "^3.0.5",
+    "autoprefixer": "^10.2.6",
+    "eslint": "^7.27.0",
+    "eslint-plugin-vue": "^7.10.0",
+    "luxon": "^1.27.0",
+    "postcss": "^8.3.0",
+    "tailwindcss": "^2.1.4",
+    "vite": "^2.3.5"
+  }
+}

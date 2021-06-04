@@ -1,9 +1,0 @@
-{
-  "name": "com.geidelguerra.nauta_chrome_extension",
-  "description": "Nauta",
-  "path": "/home/geidel/projects/nauta-chrome-extension/host/nauta-chrome-extension-helper.js",
-  "type": "stdio",
-  "allowed_origins": [
-    "chrome-extension://boecblfcniobkchffifiempdnikgcfok/"
-  ]
-}

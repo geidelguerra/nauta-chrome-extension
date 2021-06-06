@@ -20,6 +20,6 @@
   ],
   "host_permissions": [
     "https://secure.etecsa.net:8443/*",
-    "https://freegeoip.app/*"
+    "https://reallyfreegeoip.org/json/"
   ]
 }

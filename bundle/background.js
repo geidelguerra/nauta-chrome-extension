@@ -86,7 +86,7 @@ const extractDataFromPage = (tabId) => {
 const refreshGeoLocation = () => {
   chrome.storage.local.set({ geoError: null })
 
-  fetch('https://freegeoip.app/json', {
+  fetch('https://reallyfreegeoip.org/json/', {
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ const refreshGeoLocation = () => {
     redirect: 'follow'
   })
     .then((response) => {
-      if (!response.ok()) {
+      if (!response.ok) {
         const error = new Error(response.statusText)
         error.response = response
 

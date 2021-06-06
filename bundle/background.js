@@ -84,6 +84,8 @@ const extractDataFromPage = (tabId) => {
 }
 
 const refreshGeoLocation = () => {
+  chrome.storage.local.set({ geoError: null })
+
   fetch('https://freegeoip.app/json', {
     mode: 'cors',
     headers: {
@@ -92,8 +94,22 @@ const refreshGeoLocation = () => {
     },
     redirect: 'follow'
   })
-    .then((response) => response.json())
-    .then((geo) => chrome.storage.local.set({ geo }))
+    .then((response) => {
+      if (!response.ok()) {
+        const error = new Error(response.statusText)
+        error.response = response
+
+        throw error
+      }
+
+      return response.json()
+    })
+    .then((geo) => {
+      chrome.storage.local.set({ geo })
+    })
+    .catch((error) => {
+      chrome.storage.local.set({ geoError: error })
+    })
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {

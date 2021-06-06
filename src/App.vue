@@ -41,6 +41,12 @@
           />
         </div>
       </template>
+      <div
+        v-if="geoError"
+        class="mb-4 text-sm font-bold text-center text-red-500"
+      >
+        Error encountered when refreshing geo location: {{ 'geoError.message' }}
+      </div>
       <Button
         class="w-full"
         :disabled="status === 'disconnecting'"
@@ -103,7 +109,9 @@ export default {
       timeConnected: null,
       timeLeft: null,
       intervalID: null,
-      geo: null
+      geo: null,
+      geoError: null,
+      refreshingGeo: false,
     }
   },
   computed: {
@@ -189,6 +197,16 @@ export default {
 
       if (changes.geo) {
         this.geo = changes.geo.newValue
+      }
+    })
+
+    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+      if (request.name === 'refreshing-geo') {
+        return this.geoError = null
+      }
+
+      if (request.name === 'refreshing-geo-failed') {
+        return this.geoError = request.error
       }
     })
   },
